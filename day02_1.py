@@ -9,16 +9,20 @@ def get_button(move, button):
         return button + 3 if button < 7 else button
 
 
-def get_code(instructions):
+def decimalify(digits):
+    return int(''.join([str(d) for d in digits]))
+
+
+def get_code(instructions, button_getter=get_button, stringifier=decimalify):
     code_digits = []
     button = 5
 
     for instruction in instructions:
         for move in instruction:
-            button = get_button(move, button)
+            button = button_getter(move, button)
         code_digits.append(button)
 
-    return int(''.join([str(d) for d in code_digits]))
+    return stringifier(code_digits)
 
 
 if __name__ == '__main__':
