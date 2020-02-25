@@ -26,3 +26,9 @@ def supports_tls(s):
         return True
     return False
 
+
+if __name__ == '__main__':
+    with open('data/input07.txt') as f:
+        lines = [line.strip() for line in f.readlines()]
+
+    print(sum(supports_tls(line) for line in lines))  # 183 is too high
