@@ -1,6 +1,7 @@
 from unittest import TestCase
 
 from day07_1 import has_abba, has_abba_in_brackets, supports_tls
+from day07_2 import supports_ssl
 
 
 class TestDay07(TestCase):
@@ -33,3 +34,9 @@ class TestDay07(TestCase):
                 'luqpeubugunvgzdqk[jfnihalscclrffkxqz]wvzpvmpfiehevybbgpg[esjuempbtmfmwwmqa]rhflhjrqjbbsadjnyc'
             )
         )
+
+    def testSupportsSsl(self):
+        self.assertTrue(supports_ssl('aba[bab]xyz'))
+        self.assertFalse(supports_ssl('xyx[xyx]xyx'))
+        self.assertTrue(supports_ssl('aaa[kek]eke'))
+        self.assertTrue(supports_ssl('zazbz[bzb]cdb'))
