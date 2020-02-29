@@ -1,5 +1,6 @@
 from unittest import TestCase
-from day07_1 import supports_tls, has_abba_in_brackets, has_abba
+
+from day07_1 import has_abba, has_abba_in_brackets, supports_tls
 
 
 class TestDay07(TestCase):

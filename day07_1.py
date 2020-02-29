@@ -1,7 +1,7 @@
 import re
 
 ABBA_PATT = re.compile(r'(.)(.)\2\1')
-BRACKETED_ABBA_PATT = re.compile(r'\[[^\]]*(.)(.)\2\1\.*?\]')
+BRACKETED_ABBA_PATT = re.compile(r'\[[^\]]*(.)(.)\2\1.*?\]')
 
 
 def has_abba_in_brackets(s, debug=False):
