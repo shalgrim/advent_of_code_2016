@@ -40,3 +40,4 @@ class TestDay07(TestCase):
         self.assertFalse(supports_ssl('xyx[xyx]xyx'))
         self.assertTrue(supports_ssl('aaa[kek]eke'))
         self.assertTrue(supports_ssl('zazbz[bzb]cdb'))
+        self.assertFalse(supports_ssl('za[zbz][bzb]cdb'))

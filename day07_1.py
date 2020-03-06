@@ -40,9 +40,3 @@ if __name__ == '__main__':
 
     supported = [supports_tls(line) for line in lines]
     print(sum(supports_tls(line) for line in lines))  # 183 is too high
-
-    for i, line in enumerate(lines):
-        if supports_tls(line):
-            print(i, line)
-            supports_tls(line, True)
-
