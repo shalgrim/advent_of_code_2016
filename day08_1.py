@@ -13,7 +13,7 @@ def print_grid(grid):
 
 
 def run_instruction(instruction, grid):
-    print('\nbefore\n', grid)
+    # print('\nbefore\n', grid)
     if instruction.split()[0] == 'rect':
         width, height = instruction.split()[1].split('x')
         width, height = int(width), int(height)
@@ -35,7 +35,7 @@ def run_instruction(instruction, grid):
             made_row = made_row[-amount:] + made_row[:-amount]
             for y in range(grid_height):
                 grid[y][x] = made_row[y]
-    print('\nafter\n', grid)
+    # print('\nafter\n', grid)
 
 
 def run_program(instructions, grid_width=50, grid_height=6):
@@ -58,3 +58,4 @@ if __name__ == '__main__':
 
     grid = run_program(lines)
     print(num_pixels_lit(grid))
+    print_grid(grid)
