@@ -15,12 +15,17 @@ def decompress(s):
             remaining = remaining[open_paren:]
             close_paren = remaining.find(')')
             inside_parens = remaining[1:close_paren]
-            chars_to_repeat, repeat_times = int(inside_parens.split('x')[0]), int(inside_parens.split('x')[1])
+            chars_to_repeat, repeat_times = (
+                int(inside_parens.split('x')[0]),
+                int(inside_parens.split('x')[1]),
+            )
 
             for _ in range(repeat_times):
-                decompressed += remaining[close_paren+1:close_paren+1+chars_to_repeat]
+                decompressed += remaining[
+                    close_paren + 1 : close_paren + 1 + chars_to_repeat
+                ]
 
-            remaining = remaining [close_paren+1+chars_to_repeat:]
+            remaining = remaining[close_paren + 1 + chars_to_repeat :]
 
     return decompressed
 
@@ -31,3 +36,4 @@ if __name__ == '__main__':
 
     ins = ''.join(txt.split())  # remove whitespace
     print(len(decompress(ins)))
+
