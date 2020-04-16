@@ -35,33 +35,37 @@ def make_value_rules(value_lines):
 def main(lines):
     bot_rules, value_rules = create_rules(lines)
 
-    bots = initialize_outputs_with_val_rules(value_rules)
+    bots = initialize_bots_with_val_rules(value_rules)
     outputs = {}
 
     while True:
-        bots_with_two = [bot for bot, bot_has in bots.items() if len(bot_has) == 2]
-
-        for bot in bots_with_two:
+        for bot in ready_bots(bots):
             if sorted(bots[bot]) == [17, 61]:
                 return bot
             process_bot_rules(bot, bot_rules, bots, outputs)
 
 
+def ready_bots(bots):
+    return [bot for bot, bot_has in bots.items() if len(bot_has) == 2]
+
+
 def process_bot_rules(bot, bot_rules, bots, outputs):
-    lo = min(bots[bot])
-    hi = max(bots[bot])
+    """Assumption: len(bots[bot]) == 2"""
+    lo, hi = sorted(bots[bot])
     if bot_rules[bot]['lotype'] == 'bot':
         bots[bot_rules[bot]['lo']].append(lo)
     else:
         outputs[bot_rules[bot]['lo']] = lo
+
     if bot_rules[bot]['hitype'] == 'bot':
         bots[bot_rules[bot]['hi']].append(hi)
     else:
         outputs[bot_rules[bot]['hi']] = lo
+
     bots[bot].clear()
 
 
-def initialize_outputs_with_val_rules(value_rules):
+def initialize_bots_with_val_rules(value_rules):
     bots = defaultdict(list)
     for getbot, val_list in value_rules.items():
         bots[getbot].extend(val_list)
