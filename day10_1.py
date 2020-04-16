@@ -33,39 +33,47 @@ def make_value_rules(value_lines):
 
 
 def main(lines):
-    bot_lines = [line for line in lines if line[0] == 'b']
-    value_lines = [line for line in lines if line[0] == 'v']
+    bot_rules, value_rules = create_rules(lines)
 
-    bot_rules = make_bot_rules(bot_lines)
-    value_rules = make_value_rules(value_lines)
-
-    bots = defaultdict(list)
+    bots = initialize_outputs_with_val_rules(value_rules)
     outputs = {}
-
-    for getbot, val_list in value_rules.items():
-        bots[getbot].extend(val_list)
 
     while True:
         bots_with_two = [bot for bot, bot_has in bots.items() if len(bot_has) == 2]
-        print(len(bots_with_two))
 
         for bot in bots_with_two:
             if sorted(bots[bot]) == [17, 61]:
                 return bot
-            lo = min(bots[bot])
-            hi = max(bots[bot])
+            process_bot_rules(bot, bot_rules, bots, outputs)
 
-            if bot_rules[bot]['lotype'] == 'bot':
-                bots[bot_rules[bot]['lo']].append(lo)
-            else:
-                outputs[bot_rules[bot]['lo']] = lo
 
-            if bot_rules[bot]['hitype'] == 'bot':
-                bots[bot_rules[bot]['hi']].append(hi)
-            else:
-                outputs[bot_rules[bot]['hi']] = lo
+def process_bot_rules(bot, bot_rules, bots, outputs):
+    lo = min(bots[bot])
+    hi = max(bots[bot])
+    if bot_rules[bot]['lotype'] == 'bot':
+        bots[bot_rules[bot]['lo']].append(lo)
+    else:
+        outputs[bot_rules[bot]['lo']] = lo
+    if bot_rules[bot]['hitype'] == 'bot':
+        bots[bot_rules[bot]['hi']].append(hi)
+    else:
+        outputs[bot_rules[bot]['hi']] = lo
+    bots[bot].clear()
 
-            bots[bot].clear()
+
+def initialize_outputs_with_val_rules(value_rules):
+    bots = defaultdict(list)
+    for getbot, val_list in value_rules.items():
+        bots[getbot].extend(val_list)
+    return bots
+
+
+def create_rules(lines):
+    bot_lines = [line for line in lines if line[0] == 'b']
+    value_lines = [line for line in lines if line[0] == 'v']
+    bot_rules = make_bot_rules(bot_lines)
+    value_rules = make_value_rules(value_lines)
+    return bot_rules, value_rules
 
 
 if __name__ == '__main__':
