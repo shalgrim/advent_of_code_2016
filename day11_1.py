@@ -1,8 +1,8 @@
 import itertools
 from copy import copy
 
-PrG = 'PG'
-PrM = 'PM'
+PrG = 'PrG'
+PrM = 'PrM'
 CoG = 'CoG'
 CuG = 'CuG'
 RG = 'RG'
