@@ -175,6 +175,8 @@ def shortest_path_solver(floors):
     steps = 0
     seen_states = {}
     while not any(p.is_complete() for p in puzzles):
+        if steps % 10 == 0:
+            print(steps)
         for p in puzzles:
             if repr(p) not in seen_states:
                 seen_states[repr(p)] = steps
