@@ -185,7 +185,8 @@ def shortest_path_solver(floors):
             next_states = p.generate_next_states()
             new_puzzles += [ns for ns in next_states if repr(ns) not in seen_states]
 
-        puzzles = new_puzzles
+        d = {repr(np): np for np in new_puzzles}
+        puzzles = list(d.values())
 
     return steps
 
