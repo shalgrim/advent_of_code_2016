@@ -11,5 +11,7 @@ FLOORS2 = [
     [CoM, CuM, RM, PlM],
     [],
 ]
+
+
 if __name__ == '__main__':
     print(shortest_path_solver(FLOORS2))
