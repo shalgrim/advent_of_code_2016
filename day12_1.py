@@ -1,6 +1,6 @@
 
 def run_program(lines):
-    registers = {'a': 0, 'b': 0, 'c': 0, 'd': 0}
+    registers = {'a': 0, 'b': 0, 'c': 1, 'd': 0}
     iptr = 0
 
     def intize(val):
