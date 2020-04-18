@@ -178,6 +178,8 @@ def shortest_path_solver(floors):
         for p in puzzles:
             if repr(p) not in seen_states:
                 seen_states[repr(p)] = steps
+            else:
+                raise Exception('should not be here')
         steps += 1
 
         new_puzzles = []
