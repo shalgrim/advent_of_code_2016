@@ -16,4 +16,4 @@ if __name__ == '__main__':
     ints = [[int(x) for x in row.split()] for row in lines]
     vertical_triangles = verticalize(ints)
     possibles = [is_possible_triangle(vert) for vert in vertical_triangles]
-    print(sum(possibles))  # 1836 is too low...wild because the input is only 1908 lines long
+    print(sum(possibles))  # 1836 is too low...wild because the input is only 1908 lines long...nope, 1836 is right wth

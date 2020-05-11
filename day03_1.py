@@ -1,7 +1,17 @@
+# def is_possible_triangle(measurements):
+#     max_val = max(measurements)
+#     measurements.remove(max_val)
+#     return sum(measurements) > max_val
+
+
 def is_possible_triangle(measurements):
-    max_val = max(measurements)
-    measurements.remove(max_val)
-    return sum(measurements) > max_val
+    if (
+        measurements[0] + measurements[1] > measurements[2]
+        and measurements[0] + measurements[2] > measurements[1]
+        and measurements[1] + measurements[2] > measurements[0]
+    ):
+        return True
+    return False
 
 
 if __name__ == '__main__':
