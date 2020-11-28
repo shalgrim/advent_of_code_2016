@@ -1,32 +1,22 @@
 from hashlib import md5
-import re
-
-TRIPLE = re.compile(r'(.)\1\1')
-
-# SALT = 'abc'  # example
-SALT = 'cuanljph'  # actual
-KNOWN_HASHES = {}
+from day14_1 import my_md5, get_triple_char
 
 
-def my_md5(num):
-    m = md5()
-    s = SALT + str(num)
-    ba = bytearray(s, 'utf-8')
-    m.update(ba)
-    return m.hexdigest()
+def stretched_md5(num):
+    answer = my_md5(num)
+    for _ in range(2016):
+        m = md5()
+        ba = bytearray(answer, 'utf-8')
+        m.update(ba)
+        answer = m.hexdigest()
 
-
-def get_triple_char(s):
-    match = TRIPLE.search(s)
-    if match is None:
-        return None
-    return s[match.start()]
+    return answer
 
 
 def generate_hashes():
     i = 0
     while True:
-        yield i, my_md5(i)
+        yield i, stretched_md5(i)
         i += 1
 
 
