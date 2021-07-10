@@ -1,4 +1,4 @@
-from day16_1 import generate, checksum
+from day16_1 import checksum, generate, main
 
 
 def test_generate():
@@ -10,3 +10,7 @@ def test_generate():
 
 def test_checksum():
     assert checksum('110010110100') == '100'
+
+
+def test_main():
+    assert main('10000', 20) == '01100'
