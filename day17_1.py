@@ -1,5 +1,6 @@
 from hashlib import md5
 
+GOAL = 3, 3
 PUZZLE_INPUT = 'awrkjxxr'
 
 
@@ -46,10 +47,9 @@ def get_next_position(position, step):
 def find_shortest_path(passcode):
     """Because this grid is small and the goal is shortest, do BFS"""
     x, y = 0, 0
-    goal = 3, 3
     states = [((x, y), passcode)]
 
-    while not any([state[0] == goal for state in states]):
+    while not any([state[0] == GOAL for state in states]):
         new_states = []
 
         # extend search
@@ -62,7 +62,7 @@ def find_shortest_path(passcode):
         states = new_states
 
     for state in states:
-        if state[0] == goal:
+        if state[0] == GOAL:
             return state[1].removeprefix(passcode)
 
 
