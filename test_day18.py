@@ -32,3 +32,7 @@ def test_build_map():
     assert map == EXAMPLE_2
 
 
+def test_num_safe_tiles():
+    assert num_safe_tiles(EXAMPLE_2) == 38
+
+
