@@ -30,3 +30,10 @@ def build_map(row, num_rows):
 
 def num_safe_tiles(map):
     return sum(row.count(SAFE) for row in map)
+
+
+if __name__ == '__main__':
+    with open('data/input18.txt') as f:
+        row = f.read().strip()
+    map = build_map(row, 40)
+    print(num_safe_tiles(map))
