@@ -24,6 +24,7 @@ class Elf:
         self.right.left = self.left
 
     def find_stealee(self):
+        """only used in part 2"""
         num_elves_in_circle = 1
         current = self.left
         while current is not self:
@@ -41,6 +42,7 @@ class Elf:
 def main(num_elves):
     current_elf = set_up_elves(num_elves)
     while current_elf.left is not current_elf:
+        print(f"{current_elf.index=}")
         current_elf.steal_presents()
         current_elf = current_elf.left
 
